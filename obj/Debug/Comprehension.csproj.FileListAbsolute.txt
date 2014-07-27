@@ -1,1 +1,9 @@
 E:\Programming\Comprehension\Comprehension\Comprehension\bin\Debug\Comprehension.exe.config
+E:\Programming\Comprehension\Comprehension\Comprehension\bin\Debug\Comprehension.exe
+E:\Programming\Comprehension\Comprehension\Comprehension\bin\Debug\Comprehension.pdb
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.csprojResolveAssemblyReference.cache
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.Form1.resources
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.Properties.Resources.resources
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.csproj.GenerateResource.Cache
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.exe
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.pdb

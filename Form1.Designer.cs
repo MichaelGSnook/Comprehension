@@ -30,27 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.textBox = new System.Windows.Forms.TextBox();
             this.Comprehend_Button = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Comprehend = new System.Windows.Forms.ToolTip(this.components);
+            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox
-            // 
-            this.textBox.AcceptsReturn = true;
-            this.textBox.Location = new System.Drawing.Point(12, 114);
-            this.textBox.Multiline = true;
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(710, 585);
-            this.textBox.TabIndex = 0;
-            this.Comprehend.SetToolTip(this.textBox, "Paste a paragraph here you don\'t understand.");
-            this.textBox.UseWaitCursor = true;
-            this.textBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Comprehend_Button
             // 
@@ -102,13 +90,24 @@
             this.Comprehend.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.Comprehend.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
+            // richTextBox
+            // 
+            this.richTextBox.AcceptsTab = true;
+            this.richTextBox.Location = new System.Drawing.Point(12, 114);
+            this.richTextBox.Name = "richTextBox";
+            this.richTextBox.Size = new System.Drawing.Size(710, 585);
+            this.richTextBox.TabIndex = 4;
+            this.richTextBox.Text = "";
+            this.Comprehend.SetToolTip(this.richTextBox, "Paste Text Here");
+            this.richTextBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.richTextBox_MouseMove);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 711);
+            this.Controls.Add(this.richTextBox);
             this.Controls.Add(this.Comprehend_Button);
-            this.Controls.Add(this.textBox);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.menuStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -124,13 +123,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button Comprehend_Button;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolTip Comprehend;
+        private System.Windows.Forms.RichTextBox richTextBox;
     }
 }
 

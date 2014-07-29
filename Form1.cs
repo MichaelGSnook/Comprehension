@@ -22,69 +22,73 @@ namespace Comprehension
         {
             char[] delimiterChars = { ' ', ',', '.', ':', '\t' };
 
-            String input = textBox.Text;
+            String input = richTextBox.Text;
             ArrayList words = new ArrayList { };
 
             //convert String[] to ArrayList and delete spaces/punctuation.
             String [] wordsArray = input.Split(' ');
             foreach (string s in wordsArray)
             {
-                String sTemp = s;
+                String sTemp = cleanInput(s);
                 //if empty element, do not add it to the ArrayList
                 if (sTemp.Equals(""))
                 {
                     continue;
                 }
-                //Removing punctuation
-                if (sTemp.Contains(' '))
-                {
-                    sTemp = sTemp.Replace(" ", String.Empty);
-                }
-                if (sTemp.Contains(","))
-                {
-                    sTemp = sTemp.Replace(",", String.Empty);
-                }
-                if (sTemp.Contains("."))
-                {
-                    sTemp = sTemp.Replace(".", String.Empty);
-                }
-                if (sTemp.Contains("?"))
-                {
-                    sTemp = sTemp.Replace("?", String.Empty);
-                }
-                if (sTemp.Contains("!"))
-                {
-                    sTemp = sTemp.Replace("!", String.Empty);
-                }
-                if (sTemp.Contains("\""))
-                {
-                    sTemp = sTemp.Replace("\"", String.Empty);
-                }
-                if (sTemp.Contains("\'"))
-                {
-                    sTemp = sTemp.Replace("\'", String.Empty);
-                }
-                if (sTemp.Contains(";"))
-                {
-                    sTemp = sTemp.Replace(";", String.Empty);
-                }
-                if (sTemp.Contains(":"))
-                {
-                    sTemp = sTemp.Replace(":", String.Empty);
-                }
-           
 
                 words.Add(sTemp);
             }
-            System.Console.WriteLine("{0}", words[2]);
 
+            //print out each word
             foreach (string s in words)
             {
-                System.Console.WriteLine(s);
+                System.Console.Write(s);
             }
 
             //ArrayList words = new ArrayList();
             //words.Add(
+        }
+
+        private String cleanInput(String sTemp)
+        {
+            //Removing punctuation
+            if (sTemp.Contains(' '))
+            {
+                sTemp = sTemp.Replace(" ", String.Empty);
+            }
+            if (sTemp.Contains(","))
+            {
+                sTemp = sTemp.Replace(",", String.Empty);
+            }
+            if (sTemp.Contains("."))
+            {
+                sTemp = sTemp.Replace(".", String.Empty);
+            }
+            if (sTemp.Contains("?"))
+            {
+                sTemp = sTemp.Replace("?", String.Empty);
+            }
+            if (sTemp.Contains("!"))
+            {
+                sTemp = sTemp.Replace("!", String.Empty);
+            }
+            if (sTemp.Contains("\""))
+            {
+                sTemp = sTemp.Replace("\"", String.Empty);
+            }
+            if (sTemp.Contains("\'"))
+            {
+                sTemp = sTemp.Replace("\'", String.Empty);
+            }
+            if (sTemp.Contains(";"))
+            {
+                sTemp = sTemp.Replace(";", String.Empty);
+            }
+            if (sTemp.Contains(":"))
+            {
+                sTemp = sTemp.Replace(":", String.Empty);
+            }
+            return sTemp;
         }
 
         private void toolTip1_Popup(object sender, PopupEventArgs e)
@@ -100,6 +104,14 @@ namespace Comprehension
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void richTextBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point P = new Point(e.X, e.Y);
+            Char ch = richTextBox.GetCharFromPosition(P);
+            int num = richTextBox.GetCharIndexFromPosition(P);
+            Comprehend_Button.Text = "" + num;
         }
     }
 }

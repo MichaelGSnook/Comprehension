@@ -37,6 +37,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Comprehend = new System.Windows.Forms.ToolTip(this.components);
             this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,7 +75,9 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.testToolStripMenuItem,
+            this.testTypeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -100,6 +104,20 @@
             this.richTextBox.Text = "";
             this.Comprehend.SetToolTip(this.richTextBox, "Paste Text Here");
             this.richTextBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.richTextBox_MouseMove);
+            // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testToolStripMenuItem.Text = "Test def";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
+            // testTypeToolStripMenuItem
+            // 
+            this.testTypeToolStripMenuItem.Name = "testTypeToolStripMenuItem";
+            this.testTypeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.testTypeToolStripMenuItem.Text = "test type";
+            this.testTypeToolStripMenuItem.Click += new System.EventHandler(this.testTypeToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -130,6 +148,8 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolTip Comprehend;
         private System.Windows.Forms.RichTextBox richTextBox;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testTypeToolStripMenuItem;
     }
 }
 

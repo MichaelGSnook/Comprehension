@@ -111,7 +111,18 @@ namespace Comprehension
             Point P = new Point(e.X, e.Y);
             Char ch = richTextBox.GetCharFromPosition(P);
             int num = richTextBox.GetCharIndexFromPosition(P);
-            Comprehend_Button.Text = "" + num;
+            //Comprehend_Button.Text = "" + num;
+        }
+
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Word test = new Word("double");
+            richTextBox.Text = Comprehension.Word.lookUpDefinition("test");
+        }
+
+        private void testTypeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            richTextBox.Text = Comprehension.Word.lookUpType("funny");
         }
     }
 }

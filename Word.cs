@@ -46,12 +46,37 @@ namespace Comprehension
             String SearchText = "<meta name=\"description\" content=\"";
             System.Net.WebClient client = new System.Net.WebClient();
             String source = client.DownloadString("http://dictionary.reference.com/browse/" + Word);
+
+            //if punctuation, space, or one letter word
+            if(Word.Length == 1)
+            {
+                //if char is not a letter
+                if(!Char.IsLetter(Word.ToCharArray(0,1)[0]))
+                {
+                    //empty string because definition is not unknown, it does not exist
+                    return "";
+                }
+
+            }
+
+            //if Word is not known by Dictionary.com
+            if(source.Contains("Did you mean"))
+            {
+                return "unknown";            
+            }
+
             
             Int32 start = source.IndexOf(SearchText) + SearchText.Length;
             source = source.Remove(0, start + Word.Length + " definition, ".Length);
             Int32 end = source.IndexOf(" See more.\"/>");
-            source = source.Remove(end);
-            
+            try
+            {
+                source = source.Remove(end);
+            }
+            catch
+            {
+                return "unknown";
+            }
             def = source;
 
             return def;

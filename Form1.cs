@@ -111,7 +111,8 @@ namespace Comprehension
             Point P = new Point(e.X, e.Y);
             Char ch = richTextBox.GetCharFromPosition(P);
             int hoverIndex = richTextBox.GetCharIndexFromPosition(P);
-            Comprehend_Button.Text = /*hoverIndex + "";*/this.getHoverdOverWord(hoverIndex, e);
+            def_label.Text = "Definition: " + Word.lookUpDefinition(this.getHoverdOverWord(hoverIndex, e));
+            //Comprehend_Button.Text = /*hoverIndex + "";*/Word.lookUpDefinition(this.getHoverdOverWord(hoverIndex, e));
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,7 +130,6 @@ namespace Comprehension
         {
             if (richTextBox.TextLength > 0 && hoverIndex != 0)
             {
-
                 //convert text in textbox to a character array.
                 char[] textboxArray = richTextBox.Text.ToCharArray(0, richTextBox.TextLength);
 
@@ -152,7 +152,7 @@ namespace Comprehension
                 }
 
                 //while endIndex is a Letter, and is less than or equal to 2nd to last char in textbox
-                while (char.IsLetter(textboxArray[beginIndex]) && endIndex <= richTextBox.TextLength - 2)
+                while (char.IsLetter(textboxArray[endIndex]) && endIndex <= richTextBox.TextLength - 2)
                 {
                     //if following char is not a letter, exit while loop, endIndex now contains the index of the last char in desired word.
                     if (!char.IsLetter(textboxArray[endIndex + 1]))
@@ -162,10 +162,9 @@ namespace Comprehension
                     //if following char is a letter, increment to following char's index
                     else
                     {
-                        beginIndex++;
+                        endIndex++;
                     }
                 }
-
                 //return desired word being hoverd over.
                 //ex. Substring method --> Substring(beginningIndex, lenght); length = endIndex - (beginIndex - 1)
                 int length = (endIndex - (beginIndex - 1));
@@ -174,10 +173,8 @@ namespace Comprehension
             }
             else
             {
-                return "Enter text in the textbox below";
+                return " ";
             }
-
         }
-
     }
 }

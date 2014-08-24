@@ -64,8 +64,8 @@ namespace Comprehension
             {
                 return "unknown";            
             }
-
-            
+          
+                        
             Int32 start = source.IndexOf(SearchText) + SearchText.Length;
             source = source.Remove(0, start + Word.Length + " definition, ".Length);
             Int32 end = source.IndexOf(" See more.\"/>");
@@ -78,6 +78,23 @@ namespace Comprehension
                 return "unknown";
             }
             def = source;
+
+            //fixes "go1 ." issue
+            if(def.EndsWith("1 ."))
+            {
+                def = def.Remove(def.IndexOf("1 ."));
+            }
+
+            //if def doesn't end with punctuation, add a period
+            if (!Char.IsPunctuation(def, def.Length - 1))
+            {
+                def = def + ".";
+            }
+            //"Show IPA" was displayed in some definitions recieved in error, this corrects that issue
+            if (def.Contains("Show IPA"))
+            {
+                return "unknown";
+            }
 
             return def;
         }

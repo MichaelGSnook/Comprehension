@@ -141,8 +141,20 @@ namespace Comprehension
                 {
                     //if preceeding char is not a letter, exit while loop, beginIndex now contains the index of the first char in desired word.
                     if (!char.IsLetter(textboxArray[beginIndex - 1]))
-                    {
-                        break;
+                    {  
+                        //make sure no index out of bounds errors occur
+                        if (beginIndex - 2 >= 0)
+                        {
+                            //if preceeding char is ' && char before that is a letter (contractions)
+                            if (textboxArray[beginIndex - 1] == '\'' && char.IsLetter(textboxArray[beginIndex - 2]))
+                            {
+                                beginIndex--;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        } 
                     }
                     //if preceeding char is a letter, decrement to preceeding char's index
                     else
@@ -157,7 +169,19 @@ namespace Comprehension
                     //if following char is not a letter, exit while loop, endIndex now contains the index of the last char in desired word.
                     if (!char.IsLetter(textboxArray[endIndex + 1]))
                     {
-                        break;
+                        //make sure no index out of bounds errors occur
+                        if (endIndex + 2 <= richTextBox.TextLength)
+                        {
+                            //if succeeding  char is ' && char after that is a letter (contractions)
+                            if (textboxArray[endIndex + 1] == '\'' && char.IsLetter(textboxArray[endIndex + 2]))
+                            {
+                                endIndex++;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
                     }
                     //if following char is a letter, increment to following char's index
                     else

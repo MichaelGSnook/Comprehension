@@ -7,3 +7,7 @@ E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension
 E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.csproj.GenerateResource.Cache
 E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.exe
 E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.pdb
+E:\Programming\Comprehension\Comprehension\Comprehension\bin\Debug\Comprehension.exe.manifest
+E:\Programming\Comprehension\Comprehension\Comprehension\bin\Debug\Comprehension.application
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.exe.manifest
+E:\Programming\Comprehension\Comprehension\Comprehension\obj\Debug\Comprehension.application

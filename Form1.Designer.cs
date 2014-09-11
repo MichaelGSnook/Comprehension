@@ -50,6 +50,7 @@
             // 
             // menuStrip2
             // 
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
@@ -70,7 +71,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -82,23 +83,31 @@
             // richTextBox
             // 
             this.richTextBox.AcceptsTab = true;
+            this.richTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox.Location = new System.Drawing.Point(12, 114);
+            this.richTextBox.Location = new System.Drawing.Point(0, 99);
             this.richTextBox.Name = "richTextBox";
-            this.richTextBox.Size = new System.Drawing.Size(710, 585);
+            this.richTextBox.Size = new System.Drawing.Size(734, 612);
             this.richTextBox.TabIndex = 4;
             this.richTextBox.Text = "";
             this.Comprehend.SetToolTip(this.richTextBox, "Paste Text Here");
+            this.richTextBox.DoubleClick += new System.EventHandler(this.openDictionary);
             this.richTextBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.richTextBox_MouseMove);
             // 
             // def_label
             // 
-            this.def_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.def_label.Location = new System.Drawing.Point(12, 28);
+            this.def_label.AllowDrop = true;
+            this.def_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.def_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.def_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.def_label.Location = new System.Drawing.Point(0, 24);
             this.def_label.Name = "def_label";
-            this.def_label.Size = new System.Drawing.Size(710, 83);
+            this.def_label.Size = new System.Drawing.Size(734, 72);
             this.def_label.TabIndex = 5;
-            this.def_label.Text = "Definition:";
+            this.def_label.Text = "Definition: -";
             // 
             // Form1
             // 
@@ -111,7 +120,7 @@
             this.Controls.Add(this.menuStrip2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(400, 400);
             this.Name = "Form1";
             this.Text = "Comprehension © - Snook Software Solutions";
             this.menuStrip2.ResumeLayout(false);

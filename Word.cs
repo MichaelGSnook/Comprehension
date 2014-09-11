@@ -17,11 +17,14 @@ namespace Comprehension
         private String type = "";
 
         // constructor
-        public Word(String wordToLookUp)
+        public Word(String word)
         {
-            word = wordToLookUp;
-            definition = lookUpDefinition(wordToLookUp);
-            type = lookUpType(wordToLookUp);
+            this.word = word;
+            
+            //return source code of Dictionary.com page
+            String source = QueryDictionary(word);
+            definition = lookUpDefinition(word, source);
+            type = lookUpType(word, source);
         }
 
         public String getDefinition()
@@ -34,18 +37,17 @@ namespace Comprehension
             return word;
         }
 
-        /// <summary>
-        /// Gets the Definition of a Word. Example from the internet adapted to my purposes.
-        /// </summary>
-        /// <param name="Word">The Word to get the Definition of.</param>
-        /// <returns>The Word's Definition</returns>
-        public static String lookUpDefinition(String Word)
+        public String getType()
+        {
+            return type;
+        }
+
+        //Looks up definition from Dictionary.com
+        public static String lookUpDefinition(String Word, String source)
         {
             String def = "";
 
             String SearchText = "<meta name=\"description\" content=\"";
-            System.Net.WebClient client = new System.Net.WebClient();
-            String source = client.DownloadString("http://dictionary.reference.com/browse/" + Word);
 
             //if punctuation, space, or one letter word
             if(Word.Length == 1)
@@ -56,7 +58,6 @@ namespace Comprehension
                     //empty string because definition is not unknown, it does not exist
                     return "";
                 }
-
             }
 
             //if Word is not known by Dictionary.com
@@ -65,19 +66,17 @@ namespace Comprehension
                 return "unknown";            
             }
           
-                        
             Int32 start = source.IndexOf(SearchText) + SearchText.Length;
             source = source.Remove(0, start + Word.Length + " definition, ".Length);
-            Int32 end = source.IndexOf(" See more.\"/>");
+            Int32 end = source.IndexOf(" See more.\"");
             try
             {
-                source = source.Remove(end);
+                def = source.Remove(end);
             }
             catch
             {
                 return "unknown";
             }
-            def = source;
 
             //fixes "go1 ." issue
             if(def.EndsWith("1 ."))
@@ -99,23 +98,17 @@ namespace Comprehension
             return def;
         }
 
-        /// <summary>
-        /// Gets the type of a Word. Example from the internet adapted to my purposes.
-        /// </summary>
-        /// <param name="Word">The Word to get the Type of.</param>
-        /// <returns>The Word's Type</returns>
-        public static String lookUpType(String Word)
+        //Looks up type of word on dictionary.com
+        public static String lookUpType(String Word, String source)
         {
             String type = "";
 
-            String SearchText = "\"> <span class=\"pg\">";
-            System.Net.WebClient client = new System.Net.WebClient();
-            String source = client.DownloadString("http://dictionary.reference.com/browse/" + Word);
+            String SearchText = "<span class=\"dbox-pg\">";
             
             Int32 start = source.IndexOf(SearchText) + SearchText.Length;
             source = source.Remove(0, start);
-            /*Int32 end = source.IndexOf(" </span> <div class=\"");
-            source = source.Remove(end);*/
+            Int32 end = source.IndexOf("</span>");
+            source = source.Remove(end);
             
             //Sometimes there is garbage after the type, this removes all but first word
             if(source.Contains(" "))
@@ -130,6 +123,12 @@ namespace Comprehension
             type = source;
 
             return type;
+        }
+
+        public String QueryDictionary(String word)
+        {
+            System.Net.WebClient client = new System.Net.WebClient();
+            return client.DownloadString("http://dictionary.reference.com/browse/" + word);
         }
 
 
